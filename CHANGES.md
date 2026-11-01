@@ -12,6 +12,10 @@
   recovery; unlocked cuBLAS FP16/BF16/TF32 48.41/48.15/24.05 TFLOPS. No locked baseline with that
   script on this machine; repeated boots, restart, sleep and stability are not established. The
   BIOS F13 template (nvgop `0x6000a`, AMI console/EDID) is new and has this one release only.
+- Only the booted pre-rebase files (wrapper `9045718f…`, child `0f0e8015…`) are hardware-tested.
+  After rebasing onto main `fd8bbea` the same profile rebuilds to different, never-booted files
+  (wrapper `89629703…`, child `9d29273e…`); they pass the host jobs, release-graph replays and PE
+  verification only. Both sets are listed separately in the evidence.
 - The 19 host jobs of `research/profile/test-b550-3060.ps1` pass with simulated EFI/MMIO/DMA,
   including an R2 replay of the real captured console graph and a replay of the whole driver release
   (EDID stop, NVIDIA stop, IO/MEM decode restore, final verifier) on that graph with the captured

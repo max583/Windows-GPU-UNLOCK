@@ -4,16 +4,25 @@
 
 These results come from one machine, reported by the contributor, on 2026-10-28. The
 maintainer has not run a hardware test for them. The booted files were built with
-`research/headless/build-usb.ps1 -HardwareProfile b550-3060` from commit `c26378c`; later
-commits on the branch change only tests, documentation, header comments and the USB manifest
-name list.
+`research/headless/build-usb.ps1 -HardwareProfile b550-3060` from the pre-rebase profile commit
+`c26378c` (on main `c403e8f`). **Only these two files are hardware-tested:**
 
-| File | SHA-256 |
+| Booted file (hardware run) | SHA-256 |
 |---|---|
 | Wrapper `BOOTX64.EFI` (39,424 B) | `9045718fcd1b9a50b02f12d0c84c79252a965a14a265c68a90ca7f57735e48d4` |
 | Child `UNLOCK-HEADLESS.EFI` (67,584 B) | `0f0e8015dc900eb9ac1abe87a03d5a8646748fc4f314d284b95f0e5473df1d63` |
 
-The wrapper embeds the builder's Windows ESP GUID, so its hash differs on other machines.
+The branch was later rebased onto main `fd8bbea`, which changed shared unlock and test sources.
+Rebuilding the same profile from the rebased branch with the same toolchain gives **different
+files that have not been booted**. They passed the host jobs, the release-graph replays and PE
+verification only; they are not hardware evidence:
+
+| Rebuilt after rebase (host-tested only, not hardware-tested) | SHA-256 |
+|---|---|
+| Wrapper `BOOTX64.EFI` (39,424 B) | `89629703aea4a67c39d7a2ccb0e07f18fd862691950712a330a095ebbd0e28cd` |
+| Child `UNLOCK-HEADLESS.EFI` (68,608 B) | `9d29273e4f18f233a983b115fefc45dd626c6a3f9f62235396e86b67fe69530a` |
+
+Both wrappers embed the builder's Windows ESP GUID, so their hashes differ on other machines.
 
 ## Machine
 
