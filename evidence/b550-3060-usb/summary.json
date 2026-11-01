@@ -31,7 +31,10 @@
       "child_sha256": "9d29273e4f18f233a983b115fefc45dd626c6a3f9f62235396e86b67fe69530a",
       "child_bytes": 68608,
       "hardware_tested": false,
-      "note": "Same profile and toolchain, rebuilt from the rebased branch: host jobs, release-graph replays and PE verification pass; never booted."
+      "note": "Same profile and toolchain, rebuilt from the rebased branch: host jobs, release-graph replays and PE verification pass; never booted.",
+      "source_commit": "bd1a1ae",
+      "toolchain": "LLVM 20.1.8, research/headless/build-usb.ps1 -HardwareProfile b550-3060",
+      "reproducible": "built at e6ab822 and again at bd1a1ae with identical wrapper and child bytes"
     },
     "note": "Both wrappers embed the builder's Windows ESP GUID, so other machines get different wrapper hashes."
   },

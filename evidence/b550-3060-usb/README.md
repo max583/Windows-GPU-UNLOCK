@@ -13,9 +13,10 @@ maintainer has not run a hardware test for them. The booted files were built wit
 | Child `UNLOCK-HEADLESS.EFI` (67,584 B) | `0f0e8015dc900eb9ac1abe87a03d5a8646748fc4f314d284b95f0e5473df1d63` |
 
 The branch was later rebased onto main `fd8bbea`, which changed shared unlock and test sources.
-Rebuilding the same profile from the rebased branch with the same toolchain gives **different
-files that have not been booted**. They passed the host jobs, the release-graph replays and PE
-verification only; they are not hardware evidence:
+Rebuilding the same profile from the rebased branch (source commit `bd1a1ae`, LLVM 20.1.8,
+`build-usb.ps1 -HardwareProfile b550-3060`) gives **different files that have not been booted**.
+Building twice, at `e6ab822` and at `bd1a1ae`, produced identical bytes. They passed the host
+jobs, the release-graph replays and PE verification only; they are not hardware evidence:
 
 | Rebuilt after rebase (host-tested only, not hardware-tested) | SHA-256 |
 |---|---|
